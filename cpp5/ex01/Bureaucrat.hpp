@@ -1,9 +1,10 @@
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
-#include <Form.hpp>
 #include <iostream>
 #include <string>
+
+class Form;
 
 class Bureaucrat
 {
@@ -26,8 +27,13 @@ class Bureaucrat
         void decrementGrade();
         void incrementGrade();
         void display_Bureaucrat_status();
-        void beSigned(Bureaucrat A);
-        void signForm(Form A);
+        void signForm(Form& form);
+        //overload insertion
+        std::ostream& operator<<(std::ostream& A) const
+        {
+            A << name << ", bureaucrat grade " << grade;
+            return A;
+        }
 };
 
 #endif

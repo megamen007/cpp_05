@@ -3,7 +3,8 @@
 
 #include <iostream>
 #include <string>
-//#include <Bureaucrat.hpp>
+
+class Bureaucrat;
 
 class Form
 {
@@ -33,7 +34,19 @@ class Form
         void decrement_sign_Grade();
         void increment_sign_Grade();
         void increment_execute_Grade();
-        void beSigned(Bureaucrat A);
+        void beSigned(Bureaucrat& Bureaucrat);
+        //Custom Exception class
+        class GradeTooHighException{};
+        class GradeTooLowException{};
+        //overload insertion
+        std::ostream& operator<<(std::ostream& A) const
+        {
+            A << name << " Form name ";
+            A << Is_signed << " signed status";
+            A << sign_grade << " sign grade";
+            A << execute_grade << "execute grade";
+            return A;
+        }
 };
 
 #endif

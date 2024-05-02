@@ -46,9 +46,9 @@ void Bureaucrat::setGrade(int newGrade)
             this->grade = newGrade;
         }
         else
-            throw 999;
+            throw Bureaucrat::GradeTooLowException();
     }
-    catch (int exception)
+    catch (Bureaucrat::GradeTooLowException& e)
     {
         std::cout << "Grade are not Approved ." << std::endl;
     }
@@ -69,9 +69,9 @@ void Bureaucrat::incrementGrade()
             grade--;
         }
         else
-            throw 999;
+            throw Bureaucrat::GradeTooLowException();
     }
-    catch (int exception)
+    catch (Bureaucrat::GradeTooLowException& e)
     {
         std::cout << "Decrement opperation are not Approved ." << std::endl;
     }
@@ -87,9 +87,9 @@ void  Bureaucrat::decrementGrade()
             grade++;
         }
         else
-            throw 999;
+            throw Bureaucrat::GradeTooLowException();
     }
-    catch (int exception)
+    catch (Bureaucrat::GradeTooLowException& e)
     {
         std::cout << "decrement opperation are not Approved ." << std::endl;
     }

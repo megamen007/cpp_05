@@ -1,4 +1,5 @@
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 Form::Form()
 {
@@ -165,13 +166,13 @@ void Form::set_Form_Name(std::string newName)
 {
     name = newName;
 }
-//void Form::beSigned(Bureaucrat A)
-//{
-    //if (A.getGrade() < this->get_sign_Grade())
-        //Is_signed = true;
-    //else
-        //Is_signed = false;
-//}
+void Form::beSigned(Bureaucrat& Bureaucrat)
+{
+    if (Bureaucrat.getGrade() <= sign_grade)
+        Is_signed = true;
+    else
+        Is_signed = false;
+}
 
 void Form::display_Form_status()
 {

@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat()
 {
@@ -105,18 +106,15 @@ Bureaucrat::~Bureaucrat()
     std::cout << "Destructor Called";
 }
 
-void Bureaucrat::signForm(Form A)
+void Bureaucrat::signForm(Form& form)
 {
-    if (A.get_is_signed())
-        std::cout << this->getName() << " signed " << A.get_Form_Name() << std::endl;
-    else
-        std::cout << this->getName() << " couldn't sign " << A.get_Form_Name() << "because his grade are not enough " << std::endl;
-}
-
-void Form::beSigned(Bureaucrat A)
-{
-    if (A.getGrade() < this->get_sign_Grade())
-        Is_signed = true;
-    else
-        Is_signed = false;
+    try 
+    {
+        form.beSigned(*this);
+        std::cout << name << " signed " << form.get_Form_Name() << std::endl;
+    }
+    catch (Form::GradeTooLowException& e)
+    {
+        std::cout << name << " couldn't sign " << form.get_Form_Name() << std::endl;
+    }
 }
